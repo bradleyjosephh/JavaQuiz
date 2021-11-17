@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
+body {
+    background-color: #DABFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gentium Book Basic', serif;
+    
+  }
+  
+  h1, p {
+    text-align: center;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: #7FDEFF;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #question {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .timer {
+    text-align: center;
+    font-size: large;
+  }
+  
+  .go {
+    background-color: #7FDEFF;
+    color: white;
+    margin: 5px;
+    font-size: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }

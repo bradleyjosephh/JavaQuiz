@@ -93,6 +93,7 @@ document.getElementById('go').addEventListener('click', () => {
 
         if (countdownTimer <= 0) {
             clearInterval(timerObject)
+            showResults()
         }
         else {
             countdownTimer--
@@ -139,7 +140,19 @@ document.addEventListener('click', event => {
             next++
             questions.innerHTML = " "
             newGame()
+        } else {
+            clearInterval(timerObject)
+            showResults()
         }
 
     }
 })
+
+function showResults() {
+    document.getElementById('go').style.display = "none";
+    questions.innerHTML = `
+    <h6>Your Score:${score+countdownTimer}</h6><input id="usernameInitials" placeholder="username"></input>
+    <button id="userId">Save your score!</button>
+    
+    `
+}

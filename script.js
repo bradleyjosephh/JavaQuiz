@@ -2,15 +2,15 @@ const questionsJava = [
 
     { //1
         question: "What is JavaScript's file extension?",
-        choice1:'.Java',
-        choice2:'.exe',
+        choice1: '.Java',
+        choice2: '.exe',
         choice3: '.zip',
-        choice4:'.js',
+        choice4: '.js',
         answer: 4
     },
     { //2
         question: "What is the difference between const and let?",
-        choice1:"Const can be reassigned and so can let",
+        choice1: "Const can be reassigned and so can let",
         choice2: "Const cannot be reassigned but let can",
         choice3: "Neither can be reassigned",
         choice4: "Guacamole and fried chicken",
@@ -34,9 +34,9 @@ const questionsJava = [
     },
     { //5
         question: "How many different kind of loops are there in JavaScript?",
-        choice1:'Four. The "for" loop, the "else" loop, and the "while" loop.',
-        choice2:'Two. The "for" and the "while" loop.',
-        choice3:'One. The "for" loop.',
+        choice1: 'Four. The "for" loop, the "else" loop, and the "while" loop.',
+        choice2: 'Two. The "for" and the "while" loop.',
+        choice3: 'One. The "for" loop.',
         choice4: 'None of the above',
         answer: 2
     },
@@ -45,7 +45,7 @@ const questionsJava = [
         choice1: "If i==5 then",
         choice2: "If i=5 then",
         choice3: "If (i==5)",
-        choice4:"If i==5",
+        choice4: "If i==5",
         answer: 3
     },
     { //7
@@ -74,24 +74,38 @@ const questionsJava = [
     },
     { //10
         question: "IsNaN() Evalutes And Argument To Determine if Given Value",
-        choice1:"Is Not a New Object",
+        choice1: "Is Not a New Object",
         choice2: "Is Not a Null",
         choice3: "Is Not a Number",
-        choice4:"None Of The Above",
+        choice4: "None Of The Above",
         answer: 3
     }
 ];
 
 let next = 0
+let score = 0
+let timerObject
+let countdownTimer = 100
 
+document.getElementById('go').addEventListener('click', () => {
+    timerObject = setInterval(function () {
+        document.getElementById("timer").innerText = countdownTimer
 
-document.getElementById('go').addEventListener('click', () => newGame())
-
-const newGame =() => {
+        if (countdownTimer <= 0) {
+            clearInterval(timerObject)
+        }
+        else {
+            countdownTimer--
+        }
+    }, 1000)
+    newGame()
+}
+)
+const newGame = () => {
 
     document.getElementById('go').style.display = "none";
     let jsQuestions = document.createElement('div')
-    jsQuestions.innerHTML=`
+    jsQuestions.innerHTML = `
     <ul class="list-group">
   <li>${questionsJava[next].question}</li>
   <li data-value ="1" class="list-group-item">${questionsJava[next].choice1}</li>
@@ -104,20 +118,27 @@ const newGame =() => {
     
     
     `
-document.getElementById('questions').append(jsQuestions)
+    document.getElementById('questions').append(jsQuestions)
 
 
 }
 
 document.addEventListener('click', event => {
-    if (event.target.classList.contains('list-group-item')){
+    if (event.target.classList.contains('list-group-item')) {
         // var userChoice = this.getAttribute('data-value')
         var userChoice = event.target.getAttribute('data-value')
         console.log(userChoice)
-        if (next < questionsJava.length - 1){
-        next++
-        questions.innerHTML = " "
-        newGame()
+        if (userChoice == questionsJava[next].answer) {
+            score+= 5
+            document.getElementById('right').innerText = "Correct!"
+        } else {
+            document.getElementById('right').innerText = "Wrong"
+            countdownTimer -= 5
+        }
+        if (next < questionsJava.length - 1) {
+            next++
+            questions.innerHTML = " "
+            newGame()
         }
 
     }

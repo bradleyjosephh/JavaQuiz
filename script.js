@@ -1,5 +1,4 @@
 // Questions and answer objects/arrays
-let highscore = JSON.parse(localStorage.getItem("score")) || []
 const questionsJava = [
 
     { //1
@@ -162,9 +161,12 @@ function showResults() {
     `
 }
 
+// Local storage saving username and scores
 function saveScore(){
     let username = document.querySelector('#usernameInitials').value
+    let highscore = JSON.parse(localStorage.getItem("score")) || []
     console.log(username)
+
 
     highscore.push({
         username: username,
@@ -172,6 +174,16 @@ function saveScore(){
     })
 
     localStorage.setItem("score", JSON.stringify(highscore))
+    let highscorediv = document.getElementById("highscore")
+    for( let i=0; i <= highscore.length; i++) {
+        let highscoreElem = document.createElement("div")
+        highscoreElem.innerHTML = `
+        <h1>${highscore[i].username}</h1>
+        <h1>${highscore[i].score}</h1>
+        `
+        highscorediv.append(highscoreElem)
+}
+
 
 
 }

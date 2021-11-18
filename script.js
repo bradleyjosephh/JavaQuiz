@@ -1,3 +1,4 @@
+// Questions and answer objects/arrays
 const questionsJava = [
 
     { //1
@@ -82,6 +83,7 @@ const questionsJava = [
     }
 ];
 
+// declaring variables and setting up timer
 let next = 0
 let score = 0
 let timerObject
@@ -102,6 +104,7 @@ document.getElementById('go').addEventListener('click', () => {
     newGame()
 }
 )
+// populates list including questions and choices
 const newGame = () => {
 
     document.getElementById('go').style.display = "none";
@@ -124,9 +127,9 @@ const newGame = () => {
 
 }
 
+// Feedback for right and wrong answers adds to score and removes time for incorrect answers
 document.addEventListener('click', event => {
     if (event.target.classList.contains('list-group-item')) {
-        // var userChoice = this.getAttribute('data-value')
         var userChoice = event.target.getAttribute('data-value')
         console.log(userChoice)
         if (userChoice == questionsJava[next].answer) {
@@ -148,11 +151,14 @@ document.addEventListener('click', event => {
     }
 })
 
+// hides the list and prompts user to enter initials to save high score
 function showResults() {
     document.getElementById('go').style.display = "none";
     questions.innerHTML = `
     <h6>Your Score:${score+countdownTimer}</h6><input id="usernameInitials" placeholder="username"></input>
-    <button id="userId">Save your score!</button>
+    <button id="saveScoreBtn">Save your score!</button>
     
     `
 }
+
+

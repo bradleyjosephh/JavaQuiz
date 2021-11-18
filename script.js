@@ -1,4 +1,5 @@
 // Questions and answer objects/arrays
+let highscore = JSON.parse(localStorage.getItem("score")) || []
 const questionsJava = [
 
     { //1
@@ -156,9 +157,21 @@ function showResults() {
     document.getElementById('go').style.display = "none";
     questions.innerHTML = `
     <h6>Your Score:${score+countdownTimer}</h6><input id="usernameInitials" placeholder="username"></input>
-    <button id="saveScoreBtn">Save your score!</button>
+    <button onclick="saveScore()">Save your score!</button>
     
     `
 }
 
+function saveScore(){
+    let username = document.querySelector('#usernameInitials').value
+    console.log(username)
 
+    highscore.push({
+        username: username,
+        score: score+countdownTimer
+    })
+
+    localStorage.setItem("score", JSON.stringify(highscore))
+
+
+}

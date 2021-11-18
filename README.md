@@ -1,2 +1,3 @@
 As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. JavaQuiz is a timed code quiz with multiple-choice questions. This app uses elements from HTML, CSS, and Javascript while storing high scores on the local storage. It is also built using bootstrap so it is responsive on screens of a variety of sizes.
 https://bradleyjosephh.github.io/JavaQuiz/
+![coding_quiz](https://user-images.githubusercontent.com/93616520/142368091-3fa19ace-c200-487c-ae49-af92c64e8162.png)

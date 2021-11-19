@@ -154,6 +154,7 @@ document.addEventListener('click', event => {
 // hides the list and prompts user to enter initials to save high score
 function showResults() {
     document.getElementById('go').style.display = "none";
+    document.getElementById('right').style.display = "none";
     questions.innerHTML = `
     <h6>Your Score:${score+countdownTimer}</h6><input id="usernameInitials" placeholder="username"></input>
     <button onclick="saveScore()">Save your score!</button>
@@ -172,18 +173,12 @@ function saveScore(){
         username: username,
         score: score+countdownTimer
     })
-
+// converting object to string for local storage to be parsed later
+    // high score list appended to to the page after recording each score
     localStorage.setItem("score", JSON.stringify(highscore))
-    let highscorediv = document.getElementById("highscore")
-    for( let i=0; i <= highscore.length; i++) {
-        let highscoreElem = document.createElement("div")
-        highscoreElem.innerHTML = `
-        <h1>${highscore[i].username}</h1>
-        <h1>${highscore[i].score}</h1>
-        `
-        highscorediv.append(highscoreElem)
+    questions.innerHTML = '<a href="highscore.html"><button>Highscore</button></a>'
 }
 
 
 
-}
+
